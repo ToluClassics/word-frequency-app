@@ -1,11 +1,23 @@
 import os
+import json
 basedir = os.path.abspath(os.path.dirname(__file__))
+from dotenv import load_dotenv
+
+
+# import environment variables
+load_dotenv()
+
+# Opening JSON file 
+with open('credentials.json', 'r') as openfile: 
+    POSTGRES = json.load(openfile)
 
 class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = "odun omo oba"
+    SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:\
+%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 
 class ProductionConfig(Config):
     DEBUG = False
