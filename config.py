@@ -2,6 +2,7 @@ import os
 import json
 basedir = os.path.abspath(os.path.dirname(__file__))
 from dotenv import load_dotenv
+import dj_database_url
 
 
 # import environment variables
