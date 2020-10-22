@@ -2,7 +2,6 @@ import os
 import json
 basedir = os.path.abspath(os.path.dirname(__file__))
 from dotenv import load_dotenv
-import dj_database_url
 
 
 # import environment variables
@@ -17,8 +16,7 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = "odun omo oba"
-    SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % dj_database_url.config()
-    #SQLALCHEMY_DATABASE_URI = os.environ['HEROKU_POSTGRESQL_WHITE_URL']
+    SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 
 class ProductionConfig(Config):
     DEBUG = False
